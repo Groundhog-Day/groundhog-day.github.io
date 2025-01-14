@@ -1,32 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Your site description">
-    <title>Your Page Title</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Groundhog Day Bar Crawl</title>
+  <style>
+    /* ------------------------------
+       GENERAL STYLES
+    -------------------------------*/
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", sans-serif;
+      background: linear-gradient(120deg, #ffedc1, #ffd4e5);
+      color: #333;
+      overflow-x: hidden; /* Hide horizontal scrollbar if random groundhogs appear off to the side */
+    }
+    h1, h2, h3, h4, p {
+      margin: 1rem auto;
+      text-align: center;
+      max-width: 800px;
+    }
+    p {
+      line-height: 1.5;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;  /* Default for mobile */
+      padding: 2rem;
+      max-width: 1200px;      /* Increased for side-by-side layout */
+      margin: 0 auto;
+      position: relative;
+      gap: 2rem;             /* Add spacing between sides */
+    }
+
+    /* Add media query for wider screens */
+    @media (min-width: 900px) {
+      .content {
+        flex-direction: row;  /* Side by side on wide screens */
+        align-items: flex-start;
+      }
+      
+      .side {
+        flex: 1;            /* Each side takes equal space */
+        padding: 0 1rem;    /* Add some horizontal padding */
+      }
+    }
+
+    /* Sillier heading style */
+    h1 {
+      font-size: 3rem;
+      color: #942F5B;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 1rem;
+    }
+
+    /* ---------------
+       BUTTON STYLES
+       ---------------*/
+    .partiful-button {
+      display: inline-block;
+      background-color: #FF9F1C;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .partiful-button:hover {
+      background-color: #ff7b00;
+      transform: scale(1.1);
+    }
+
+    .stop-weather-button {
+      display: block;
+      margin: 2rem auto;
+      background-color: #942F5B;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0.8rem 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      width: fit-content;
+    }
+    .stop-weather-button:hover {
+      background-color: #732344;
+      transform: scale(1.05);
+    }
+
+    /* ---------------
+       GROUNDHOGS
+       ---------------
+       Added transition so that when we change top/left, 
+       the groundhog glides smoothly to its new position.
+    */
+    .groundhog {
+      position: absolute;
+      width: 40px; /* adjust as needed */
+      cursor: pointer;
+      transition: top 0.8s ease, left 0.8s ease;
+    }
+    .groundhog:hover {
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    /* ---------------
+       WEATHER EMOJIS
+       ---------------*/
+    .weather-container {
+      pointer-events: none; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; 
+      z-index: 9999; /* on top of everything */
+    }
+    .weather-emoji {
+      position: absolute;
+      font-size: 2rem; 
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-120%);
+      }
+      100% {
+        transform: translateY(120vh);
+      }
+    }
+  </style>
+</head>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <!-- Main content -->
-    </main>
+    <!-- MAIN TITLE -->
+    <div class="title-container" style="text-align: center; padding: 2rem;s">
+      <h1>GROUNDHOG DAY BAR CRAWL</h1>
+      <h3>In glorious celebration of the best holiday humans have yet invented. </h3>
+    </div>
 
-    <footer>
-        <!-- Footer content -->
-    </footer>
+  <div class="content">
 
-    <script src="script.js"></script>
+    <div class="side">
+    <!-- EVENT COPY -->
+
+    <p>
+      <strong>WHAT:</strong><br>
+      • Bar crawl around McCarren Park<br>
+      • Williamsburg’s FIRST EVER Groundhog Day ceremony <br>
+      • Live music/DJs<br>
+      • Prizes<br>
+      • Drink deals<br>
+      • Weather predictions from rodents
+    </p>
+    <p>
+      <strong>WHEN:</strong> Feb 1, 12-5 PM
+    </p>
+    <p>
+      <strong>WHO:</strong> You and everyone you know. Everyone will be there. Literally everyone. And you. 
+    </p>
+    <p>
+      <strong>WHY:</strong> Williamsburg needs a groundhog. You need a beer. <br>
+      More details to come. Just show up, get drunk, and bask in the majesty of this incredible holiday.
+    </p>
+
+    <!-- LINK BUTTON TO PARTIFUL -->
+    <div style="text-align: center;">
+      <a
+        class="partiful-button"
+        href="https://partiful.com/e/ON9GUYXLs9zh4r4yB0m6" 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        RSVP on Partiful
+      </a>
+    </div>
+    </div>
+    <div class="side">
+      <img src="promo.png" style="width: 100%; max-width: 650px;" 
+      alt="Groundhog" class="groundhog-image">
+    </div>
+
+  </div>
+
+
+
+  <!-- STOP WEATHER BUTTON -->
+  <button class="stop-weather-button" id="stopWeatherBtn">Stop The Weather</button>
+
+  <!-- Container for weather emojis -->
+  <div class="weather-container" id="weatherContainer"></div>
+
+  <script>
+    // 1. CREATE RANDOM GROUNDHOGS AND PLACE THEM ON THE PAGE
+    // (Replace 'PATH_TO_GROUNDHOG_IMAGE' with your groundhog image)
+    const groundhogImageSrc = 'hog.png';
+    const NUM_GROUNDHOGS = 6; 
+    const groundhogs = [];
+
+    for (let i = 0; i < NUM_GROUNDHOGS; i++) {
+      const gh = document.createElement('img');
+      gh.src = groundhogImageSrc;
+      gh.classList.add('groundhog');
+
+      // random initial positions in the viewport
+      const randomTop = Math.random() * 80;  // in vh
+      const randomLeft = Math.random() * 80; // in vw
+      gh.style.top = randomTop + 'vh';
+      gh.style.left = randomLeft + 'vw';
+
+      // On click, we change the weather
+      gh.addEventListener('click', changeWeather);
+
+      // Keep track of groundhogs in an array
+      groundhogs.push(gh);
+
+      document.body.appendChild(gh);
+    }
+
+    // 2. RANDOM MOVEMENT FOR GROUNDHOGS
+    // Each groundhog gets its own interval.
+    groundhogs.forEach((gh) => {
+      startRandomMovement(gh);
+    });
+
+    function startRandomMovement(gh) {
+      setInterval(() => {
+        if (Math.random() < 0.2) {
+          const randomTop = Math.random() * 80;  // in vh
+          const randomLeft = Math.random() * 80; // in vw
+          gh.style.top = randomTop + 'vh';
+          gh.style.left = randomLeft + 'vw';
+        }
+      }, 2000); // Move every 5 seconds (adjust as desired)
+    }
+
+    // 3. WEATHER LOGIC
+    // Possible weather states: winter (snow), spring (flowers), rain
+    const weatherStates = ['winter', 'spring', 'rain'];
+    let currentWeather = null;
+    const weatherContainer = document.getElementById('weatherContainer');
+
+    function changeWeather() {
+      // pick a random weather state
+      const newWeather = weatherStates[Math.floor(Math.random() * weatherStates.length)];
+      setWeather(newWeather);
+    }
+
+    function setWeather(weatherType) {
+      // if we're already at this weather type, skip
+      if (currentWeather === weatherType) return;
+
+      // Clear out the old weather
+      clearWeather();
+
+      // If we are setting to "null", do not create any new effect
+      if (!weatherType) {
+        currentWeather = null;
+        return;
+      }
+
+      currentWeather = weatherType;
+
+      // Create new weather effect
+      switch (weatherType) {
+        case 'winter':
+          // Add snowflake emojis
+          generateEmojis('❄️', 40);
+          break;
+        case 'spring':
+          // Add flower emojis
+          generateEmojis('🌸', 40);
+          break;
+        case 'rain':
+          // Add raindrop emojis
+          generateEmojis('💧', 40);
+          break;
+        default:
+          // no action
+      }
+    }
+
+    // Generate many emojis falling from top
+    function generateEmojis(emoji, count) {
+      for (let i = 0; i < count; i++) {
+        const emojiDiv = document.createElement('div');
+        emojiDiv.classList.add('weather-emoji');
+        emojiDiv.textContent = emoji;
+        // random horizontal position
+        const startLeft = Math.random() * 100;
+        emojiDiv.style.left = startLeft + 'vw';
+        // random duration
+        const duration = 3 + Math.random() * 4; // between 3-7 seconds
+        emojiDiv.style.animationDuration = duration + 's';
+        // random size
+        const size = 1 + Math.random() * 1.5; 
+        emojiDiv.style.fontSize = size + 'rem';
+        // random delay
+        const delay = Math.random() * 3;
+        emojiDiv.style.animationDelay = delay + 's';
+        weatherContainer.appendChild(emojiDiv);
+      }
+    }
+
+    function clearWeather() {
+      // remove all children of weatherContainer
+      while (weatherContainer.firstChild) {
+        weatherContainer.removeChild(weatherContainer.firstChild);
+      }
+    }
+
+    // 4. STOP WEATHER BUTTON
+    const stopWeatherBtn = document.getElementById('stopWeatherBtn');
+    stopWeatherBtn.addEventListener('click', () => {
+      setWeather(null);
+    });
+
+    // Start with no weather
+    setWeather(null);
+  </script>
+
 </body>
 </html>
