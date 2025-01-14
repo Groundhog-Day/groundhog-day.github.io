@@ -13,7 +13,7 @@
       font-family: "Roboto", sans-serif;
       background: linear-gradient(120deg, #ffedc1, #ffd4e5);
       color: #333;
-      overflow-x: hidden; /* Hide horizontal scrollbar if random groundhogs appear off to the side */
+      overflow-x: hidden;
     }
     h1, h2, h3, h4, p {
       margin: 1rem auto;
@@ -23,28 +23,27 @@
     p {
       line-height: 1.5;
     }
+
     .content {
       display: flex;
-      flex-direction: column;  /* Default for mobile */
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
       padding: 2rem;
-      max-width: 1200px;      /* Increased for side-by-side layout */
+      max-width: 1200px;
       margin: 0 auto;
       position: relative;
-      gap: 2rem;             /* Add spacing between sides */
+      gap: 2rem;
+      /* width: 100%;  */
     }
 
-    /* Add media query for wider screens */
-    @media (min-width: 900px) {
-      .content {
-        flex-direction: row;  /* Side by side on wide screens */
-        align-items: flex-start;
-      }
-      
-      .side {
-        flex: 1;            /* Each side takes equal space */
-        padding: 0 1rem;    /* Add some horizontal padding */
-      }
-    }
+    .side {
+      margin: 0 auto;
+      min-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }   
 
     /* Sillier heading style */
     h1 {
